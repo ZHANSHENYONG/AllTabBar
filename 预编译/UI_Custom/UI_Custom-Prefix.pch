@@ -1,0 +1,47 @@
+
+
+//__OBJC__标示符:表示宏内引用的文件确保只被使用Objective-C语言的文件所引用
+//ifdef 表示如果__OBJC__ 被系统#define宏定义过,则执行#import "AppDelegate.h"
+
+#ifdef __OBJC__
+
+#import "AppDelegate.h"
+#import "Defines.h"
+
+#endif
+
+
+
+
+//*******在上面引入Defines.h之后,下面就可以全部放到Defines.h里了
+
+//DEBUG 模式为程序员调试模式, Release是发布模式是面向客户的,因为在Release模式下程序比DEBUG模式更优化,运行熟读更快
+#if DEBUG
+
+#define NSLog(FORMAT, ...) fprintf(stderr,"[%s:%d行] %s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+
+#else
+
+#define NSLog(FORMAT, ...) nil
+
+#endif
+
+
+
+
+
+//判断当前系统版本和手机类型
+//#define     iOS8      ([[[ currentDevice] systemVersion] floatValue] >= 8.0) ? YES : NO
+
+#define     iPHone6                         ([UIScreen mainScreen].bounds.size.height == 667) ? YES : NO
+
+
+#define     YOUMENGKEY    @"5225ae5956240be8d70750dd"
+
+
+
+
+
+
+
+
